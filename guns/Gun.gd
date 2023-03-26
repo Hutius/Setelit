@@ -1,0 +1,67 @@
+extends Sprite
+
+export (float) var fire_rate = 0.2
+export (bool) var single_shot = true
+export (Array, int) var spread_angles = [-0.1, 0.1]
+export (PackedScene) var bullet_scene
+
+var can_shoot: = true
+var shooting: = false setget set_shooting
+onready var timer: = $Timer
+onready var spawn_pos: = $Position2D
+
+
+func _process(_delta):
+	var mpos = get_global_mouse_position()
+	var ang = (get_global_mouse_position() - self.get_global_position()).angle()
+
+	look_at(mpos)
+
+
+	if (rad2deg(ang) >= 90 or rad2deg(ang) <= -90):
+		#elf.set_flip_h(false)
+		self.flip_v = true
+	else:
+		self.flip_v = false
+
+func _ready():
+	var _timer_connect = timer.connect("timeout", self, 'timeout')
+	timer.wait_time = fire_rate
+
+func _unhandled_input(_event):
+	if _event.is_action_pressed('shoot'):
+		set_shooting(true)
+	if _event.is_action_released('shoot'):
+		set_shooting(false)
+
+	
+
+func set_shooting(value:bool)->void:
+	if value && can_shoot:
+		shooting = true
+		can_shoot = false
+		shoot()
+	elif !value:
+		shooting = false
+
+
+func timeout():
+	if shooting:
+		if !single_shot:
+			shoot()
+		else:
+			can_shoot = true
+			shooting = false
+	else:
+		can_shoot = true
+
+func shoot()->void:
+	timer.start()
+	for angle in spread_angles:
+		var bullet:Area2D = bullet_scene.instance()
+		bullet.spawner = owner										#Add player as spawner
+		bullet.rotation_degrees += angle
+		bullet.global_position = $Position2D.global_position
+		add_child(bullet)											#smarter way is to signal to level for parenting somewhere else
+	
+
