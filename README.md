@@ -1,1 +1,2 @@
-# mobile_game_madi
+# Setelit
+2d шутер
