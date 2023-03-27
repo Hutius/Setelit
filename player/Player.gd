@@ -27,7 +27,7 @@ func _physics_process(_delta):
 
 	velocity = move_and_slide(velocity, FLOOR)
 	animate()
-	gun_flip()
+	#gun_flip()
 
 func animate():
 	var anim = "idle"
