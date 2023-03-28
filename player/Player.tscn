@@ -20,7 +20,7 @@
 [ext_resource path="res://assets/jump/PBjump_1_3.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 18.625, 30 )
+extents = Vector2( 20, 28.5 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -59,7 +59,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.375, 1 )
+position = Vector2( -1, 0.5 )
 shape = SubResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -71,7 +71,7 @@ cast_to = Vector2( 0, 36 )
 position = Vector2( 2.38419e-07, -9 )
 scale = Vector2( 3.28953, 3.28953 )
 frames = SubResource( 3 )
-animation = "idle"
+animation = "run"
 frame = 4
 speed_scale = 1.2
 
