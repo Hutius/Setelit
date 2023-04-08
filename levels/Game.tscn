@@ -31,12 +31,6 @@ position = Vector2( 714, 102 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 736, 542 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 0, 8 )
-scale = Vector2( 0.5, 0.5 )
-current = true
-zoom = Vector2( 0.5, 0.5 )
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -46,6 +40,6 @@ motion_mirroring = Vector2( 1, 1 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.576471, 0.576471, 0.576471, 1 )
 self_modulate = Color( 0.764706, 0.772549, 0.847059, 1 )
-position = Vector2( 584, 296 )
-scale = Vector2( 0.616769, 0.616768 )
+position = Vector2( 710.951, 403.473 )
+scale = Vector2( 0.749009, 0.815791 )
 texture = ExtResource( 5 )
