@@ -26,7 +26,7 @@ func _physics_process(_delta:float)->void:
 
 
 
-func body_entered(_body:StaticBody2D)->void:
+func body_entered(_body:PhysicsBody2D)->void:
 	queue_free()
 
 func timeout()->void:
