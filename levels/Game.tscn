@@ -52,11 +52,3 @@ margin_left = 0.0
 margin_top = -200.0
 margin_right = 200.0
 margin_bottom = 0.0
-
-[node name="Virtual joystick Right" parent="GUI" instance=ExtResource( 6 )]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -200.0
-margin_top = -200.0
-margin_right = 0.0
-margin_bottom = 0.0

@@ -5,6 +5,9 @@ export (bool) var single_shot = true
 export (Array, int) var spread_angles = [-0.1, 0.1]
 export (PackedScene) var bullet_scene
 
+export (NodePath) var joystickRightPath
+onready var joystickRight : VirtualJoystick = get_node(joystickRightPath)
+
 var can_shoot: = true
 var shooting: = false setget set_shooting
 onready var timer: = $Timer
@@ -12,13 +15,12 @@ onready var spawn_pos: = $Position2D
 
 
 func _process(_delta):
-	var mpos = get_global_mouse_position()
-	var ang = (get_global_mouse_position() - self.get_global_position()).angle()
-
-	look_at(mpos)
+	if joystickRight and joystickRight.is_pressed():
+		rotation = joystickRight.get_output().angle()
 
 
-	if (rad2deg(ang) >= 90 or rad2deg(ang) <= -90):
+
+	if (rad2deg(rotation) >= 90 or rad2deg(rotation) <= -90):
 		#elf.set_flip_h(false)
 		self.flip_v = true
 	else:

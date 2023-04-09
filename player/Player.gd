@@ -29,7 +29,7 @@ func _physics_process(_delta):
 
 	velocity = move_and_slide(velocity, FLOOR)
 	animate()
-	# gun_flip()
+	#gun_flip()
 	# track_time_button()
 
 func animate():
