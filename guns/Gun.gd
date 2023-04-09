@@ -3,7 +3,7 @@ extends Sprite
 export (float) var fire_rate = 0.2
 export (bool) var single_shot = true
 export (Array, int) var spread_angles = [-0.1, 0.1]
-var bullet_scene = preload("res://bullets/Bullet.tscn")
+export (PackedScene) var bullet_scene
 
 var can_shoot: = true
 var shooting: = false setget set_shooting
