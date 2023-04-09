@@ -1,8 +1,8 @@
-
 extends Area2D
 
-export (float) var speed: = 10.0 * 60.0
-export (int) var damage: = 1
+
+
+export (float) var speed: = 10.0 * 100.0
 export (float) var lifetime: = 2.0
 
 onready var timer: = $Timer
@@ -12,21 +12,22 @@ var spawner
 func _ready()->void:
 	timer.wait_time = lifetime
 	timer.start()
-	velocity = global_transform.x * speed			#fly to the direction x axis is pointing (gun changed global_rotation)
-	set_as_toplevel(true)							#Make independent from parent movement
-	
+	velocity = global_transform.x * speed
+	set_as_toplevel(true)
+
 	var _time = timer.connect("timeout", self, "timeout")
 	var _random_var = connect("body_entered", self, 'body_entered')
 
-
+# func _process(delta):
+# 	position += (Vector2.RIGHT*speed).rotated(rotation) * delta
+	
+	
 
 func _physics_process(_delta:float)->void:
 	global_translate(velocity*_delta)
+	
 
-
-
-
-func body_entered(_body:PhysicsBody2D)->void:
+func body_entered(_body:StaticBody2D)->void:
 	queue_free()
 
 func timeout()->void:
@@ -34,3 +35,5 @@ func timeout()->void:
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+
