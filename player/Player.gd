@@ -4,9 +4,11 @@ extends KinematicBody2D
 var velocity = Vector2()
 const SPEED = 250
 const GRAVITY = 15
-const FLY = 10
+var FLY = 10
 const JUMP = 500
 const FLOOR = Vector2(0, -1)
+var success = false
+
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("ui_left"):
@@ -28,6 +30,7 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity, FLOOR)
 	animate()
 	# gun_flip()
+	# track_time_button()
 
 func animate():
 	var anim = "idle"
@@ -81,3 +84,19 @@ func gun_flip():
 			$Body/Sprite.flip_h = true
 		else:
 			$Body/Sprite.flip_h = false
+
+# func track_time_button():
+# 	var button_time = 2
+# 	if Input.is_action_just_pressed("ui_up"):
+# 		$Timer.start(button_time)
+# 	if Input.is_action_just_released("ui_up"):
+# 		$Timer.stop()
+# 		if success:
+# 			success = false
+# 		else:
+# 			print('fail')
+
+
+# func _on_Timer_timeout():
+# 	print("success")
+# 	success = true
