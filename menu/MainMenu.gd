@@ -19,6 +19,6 @@ func _on_Join_pressed():
 
 func _connected(client_id):
 	Singleton.user_id = client_id
-	var game = preload("res://levels/Game.tscn").instance()
+	var game = preload("res://levels/Game_test.tscn").instance()
 	get_tree().get_root().add_child(game)
 	hide()

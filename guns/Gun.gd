@@ -68,6 +68,8 @@ func shoot()->void:
 		bullet.rotation_degrees += angle
 		bullet.global_position = $Position2D.global_position
 		get_parent().add_child(bullet)
+
+		
 # func shoot_spread():
 # 	var rots = [-0.1, 0, 0.1]
 # 	for i in range(3):

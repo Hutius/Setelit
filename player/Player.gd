@@ -2,12 +2,18 @@ extends KinematicBody2D
 
 
 var velocity = Vector2()
+var success = false
+var FLY = 10
+var time = 0
 const SPEED = 250
 const GRAVITY = 15
-var FLY = 10
 const JUMP = 500
 const FLOOR = Vector2(0, -1)
-var success = false
+
+
+
+# remote func _set_pos(position):
+# 	global_transform.origin = position
 
 
 func _physics_process(_delta):
@@ -21,13 +27,22 @@ func _physics_process(_delta):
 
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= FLY
+		time = time+1
 	else:
+		time=0
 		if Input.is_action_pressed("ui_select") and is_on_floor():
 			velocity.y = -JUMP
 		velocity.y += GRAVITY
+		
+	if (time > 45):
+		FLY = -2
+	else:
+		FLY=10
+		
 	
-
+	# if is_network_master():
 	velocity = move_and_slide(velocity, FLOOR)
+	# rpc_unreliable("_set_pos", global_transform.origin)
 	animate()
 	#gun_flip()
 	# track_time_button()
