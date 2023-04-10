@@ -2,6 +2,7 @@ extends Area2D
 
 export (float) var speed: = 10.0 * 100.0
 export (float) var lifetime: = 2.0
+export(float) var DAMAGE = 15
 
 onready var timer: = $Timer
 var velocity:Vector2
@@ -26,6 +27,11 @@ func _physics_process(_delta:float)->void:
 	
 
 func body_entered(_body:StaticBody2D)->void:
+	# if _body.is_a_parent_of(self):
+	# 	return
+	# if not _body.is_in_group('players'):
+	# 	return
+	# _body.damage(DAMAGE)
 	queue_free()
 
 func timeout()->void:

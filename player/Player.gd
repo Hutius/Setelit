@@ -9,8 +9,11 @@ const SPEED = 250
 const GRAVITY = 15
 const JUMP = 500
 const FLOOR = Vector2(0, -1)
+const MAX_HP = 100
+var health_points = MAX_HP
 
-
+func _ready():
+	_update_health_bar()
 
 remote func _set_pos(position):
 	global_transform.origin = position
@@ -104,7 +107,18 @@ func gun_flip():
 		else:
 			$Body/Sprite.flip_h = false
 
-# func track_time_button():
+func _update_health_bar():
+	$GUI/HealthBar.value = health_points			
+
+
+func damage(value):
+	health_points -= value
+	if health_points <= 0:
+		health_points = 0
+	_update_health_bar()
+
+
+	# func track_time_button():
 # 	var button_time = 2
 # 	if Input.is_action_just_pressed("ui_up"):
 # 		$Timer.start(button_time)
