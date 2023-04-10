@@ -15,6 +15,7 @@ onready var spawn_pos: = $Position2D
 
 
 func _process(_delta):
+	
 	if joystickRight and joystickRight.is_pressed():
 		rotation = joystickRight.get_output().angle()
 
@@ -45,7 +46,7 @@ func set_shooting(value:bool)->void:
 	if value && can_shoot:
 		shooting = true
 		can_shoot = false
-		shoot()
+		rpc('shoot')
 	elif !value:
 		shooting = false
 
@@ -53,14 +54,14 @@ func set_shooting(value:bool)->void:
 func timeout():
 	if shooting:
 		if !single_shot:
-			shoot()
+			rpc('shoot')
 		else:
 			can_shoot = true
 			shooting = false
 	else:
 		can_shoot = true
 
-func shoot()->void:
+sync func shoot():
 	timer.start()
 	for angle in spread_angles:
 		var bullet:Area2D = bullet_scene.instance()

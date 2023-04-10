@@ -43,10 +43,10 @@ scale = Vector2( 0.749009, 0.815791 )
 texture = ExtResource( 5 )
 
 [node name="PositionPlayer_1" type="Position2D" parent="."]
-position = Vector2( 1569, 521 )
+position = Vector2( 697, 512 )
 
 [node name="PositionPlayer_2" type="Position2D" parent="."]
-position = Vector2( 685, 520 )
+position = Vector2( 1549, 504 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

@@ -10,7 +10,7 @@ func _ready():
 	player1.global_transform = playerPos1.global_transform
 	add_child(player1)
 	
-	var player2 = preload("res://player/Player2.tscn").instance()
+	var player2 = preload("res://player/Player.tscn").instance()
 	player2.set_name(str(Singleton.user_id))
 	player2.set_network_master(Singleton.user_id)
 	player2.global_transform = playerPos2.global_transform

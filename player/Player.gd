@@ -42,12 +42,15 @@ func _physics_process(_delta):
 		
 	
 	if is_network_master():
+		$Camera2D.current = true
 		velocity = move_and_slide(velocity, FLOOR)
 		rpc_unreliable("_set_pos", global_transform.origin)
-	animate()
-	#gun_flip()
+		animate()
 
-func animate():
+
+
+sync func animate():
+	
 	var anim = "idle"
 
 	if velocity.y > 0 and not $RayCast2D.is_colliding():

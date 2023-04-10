@@ -9,8 +9,8 @@ func _ready()->void:
 
 
 func body_entered(body:PhysicsBody2D)->void:
-	if body:
-		if body.has_method('equip_gun'):
-			body.equip_gun(gun_type)
-			#self.queue_free()
+		if body:
+			if body.has_method('equip_gun'):
+				body.equip_gun(gun_type)
+				#self.queue_free()
 			
