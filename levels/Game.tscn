@@ -8,7 +8,7 @@
 [ext_resource path="res://joystick/virtual_joystick.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D"]
-position = Vector2( -3, 0 )
+position = Vector2( -2, 0 )
 
 [node name="TileMap2" type="TileMap" parent="."]
 modulate = Color( 0.741176, 0.741176, 0.741176, 1 )
@@ -48,7 +48,7 @@ texture = ExtResource( 5 )
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Virtual joystick Left" parent="GUI" instance=ExtResource( 6 )]
-margin_left = 0.0
-margin_top = -200.0
-margin_right = 200.0
-margin_bottom = 0.0
+margin_left = 53.0
+margin_top = -227.0
+margin_right = 253.0
+margin_bottom = -27.0

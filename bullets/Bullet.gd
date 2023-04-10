@@ -1,8 +1,6 @@
 extends Area2D
 
-
-
-export (float) var speed: = 10.0 * 200.0
+export (float) var speed: = 10.0 * 100.0
 export (float) var lifetime: = 2.0
 
 onready var timer: = $Timer

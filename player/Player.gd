@@ -89,7 +89,7 @@ func gun_flip():
 # 	var button_time = 2
 # 	if Input.is_action_just_pressed("ui_up"):
 # 		$Timer.start(button_time)
-# 	if Input.is_action_just_released("ui_up"):
+# 	elif Input.is_action_just_released("ui_up"):
 # 		$Timer.stop()
 # 		if success:
 # 			success = false
