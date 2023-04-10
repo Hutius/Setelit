@@ -12,11 +12,12 @@ const FLOOR = Vector2(0, -1)
 
 
 
-# remote func _set_pos(position):
-# 	global_transform.origin = position
+remote func _set_pos(position):
+	global_transform.origin = position
 
 
 func _physics_process(_delta):
+	
 	if Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
 	elif Input.is_action_pressed("ui_right"):
@@ -40,12 +41,11 @@ func _physics_process(_delta):
 		FLY=10
 		
 	
-	# if is_network_master():
-	velocity = move_and_slide(velocity, FLOOR)
-	# rpc_unreliable("_set_pos", global_transform.origin)
+	if is_network_master():
+		velocity = move_and_slide(velocity, FLOOR)
+		rpc_unreliable("_set_pos", global_transform.origin)
 	animate()
 	#gun_flip()
-	# track_time_button()
 
 func animate():
 	var anim = "idle"
@@ -86,11 +86,12 @@ var gun_data: = {
 	snipe = preload("res://guns/SnipeGun.tscn")
 }
 func equip_gun(gun_type:String):
-	for gun in GunPos.get_children():	#if there is gun remove it
-		gun.queue_free()
-	
-	var gun:Sprite = gun_data[gun_type].instance()
-	GunPos.add_child(gun)
+	if is_network_master():
+		for gun in GunPos.get_children():	#if there is gun remove it
+			gun.queue_free()
+		
+		var gun:Sprite = gun_data[gun_type].instance()
+		GunPos.add_child(gun)
 
 #yes?
 func gun_flip():

@@ -33,6 +33,7 @@ func _ready():
 
 
 func _unhandled_input(_event):
+	
 	if _event.is_action_pressed('shoot'):
 		set_shooting(true)
 	if _event.is_action_released('shoot'):
